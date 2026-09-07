@@ -3,6 +3,7 @@ const pool= require('./src/configs/db');
 require('dotenv').config();
 const  roomroutes = require('./src/routes/roomroutes');
 
+
 const app= express();
 
 app.use(express.json());
@@ -11,7 +12,7 @@ app.use((req,res,next)=>{
     console.log(`${req.method} ${req.url}`);
       next()
 })
-app.use('/api/rooms',roomroutes);
+app.use('/api/v1/rooms',roomroutes);
 
 app.get('/health', async (req,res,next)=>{
     try{
