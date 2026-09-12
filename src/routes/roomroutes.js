@@ -1,5 +1,7 @@
-const express=require('express');
+const express= require('express');
 const router=express.Router();
-const {getRooms}=require('../controllers/roomcontroller');
+const {getRooms,createRoom,getRoombyId}=require('../controllers/roomcontroller');
 router.get('/',getRooms);
+router.get('/:id',getRoombyId);
+router.post('/', createRoom);
 module.exports=router;
