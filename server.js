@@ -3,6 +3,9 @@ const pool= require('./src/configs/db');
 require('dotenv').config();
 const  roomroutes = require('./src/routes/roomroutes');
 
+const authroutes = require('./src/routes/authroutes');
+
+
 
 const app= express();
 
@@ -13,6 +16,7 @@ app.use((req,res,next)=>{
       next()
 })
 app.use('/api/v1/rooms',roomroutes);
+app.use('/api/v1/auth', authroutes);
 
 app.get('/health', async (req,res,next)=>{
     try{
