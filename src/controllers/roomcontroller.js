@@ -61,10 +61,27 @@ const updateRoom = async (req, res) => {
     }       
 };
 
+const delteRoom = async (req, res) => {
+    const { id } = req.params;
+    try{
+        const query='delete from rooms where room_id=$1 returning *;';
+        const values=[id];
+        const result=await pool.query(query,values);
+        if(result.rows.length===0){
+            return res.status(404).json({error:'Room not found'});
+        }
+        res.json({message:'Room deleted successfully'});
+    }catch(error){
+        console.error('Error deleting room:',error);
+        res.status(500).json({error:'Internal Server Error'});
+    }
+};
+
 
 module.exports = {
     getRooms,
     createRoom,
     getRoombyId,    
     updateRoom,
+    delteRoom,
 };
