@@ -41,9 +41,30 @@ const getRoombyId = async (req, res) => {
     }
 };
 
+const updateRoom = async (req, res) => {
+    const {id}=req.params;
+    const{room_number,room_type,price_per_night}=req.body;
+    if(!room_number ||!room_type || !price_per_night){
+        return res.status(400).json({error:'Missing required fields'});
+    }  
+    try{
+        const query='UPDATE rooms SET room_number=$1, room_type=$2, price_per_night=$3 WHERE room_id=$4 RETURNING *;';
+        const values=[room_number,room_type,price_per_night,id];
+        const result=await pool.query(query,values);
+        if(result.rows.length===0){
+            return res.status(404).json({error:'Room not found'});
+        }
+        res.json(result.rows[0]);
+    }catch(error){
+        console.error('Error updating room:',error);
+        res.status(500).json({error:'Internal Server Error'});
+    }       
+};
+
 
 module.exports = {
     getRooms,
     createRoom,
-    getRoombyId,
+    getRoombyId,    
+    updateRoom,
 };
