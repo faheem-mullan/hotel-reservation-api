@@ -3,11 +3,7 @@
   <h1>🏨 HOTEL RESERVATION API</h1>
   <p><b>Production-Grade RESTful Micro-Engine Built for High Concurrency & Data Integrity</b></p>
 
-  <p>
-    <a href="https://skillicons.dev">
-      <img src="https://skillicons.dev/icons?i=nodejs,express,postgres,js,postman,git,github&theme=dark" alt="Tech Stack" />
-    </a>
-  </p>
+ 
 
 </div>
 
@@ -43,3 +39,18 @@ sequenceDiagram
             Auth-->>Client: 200 OK + JWT Stateless Token
         end
     end
+
+# 1. Clone the repository
+git clone [https://github.com/your-username/hotel-reservation-api.git](https://github.com/your-username/hotel-reservation-api.git)
+cd hotel-reservation-api
+
+# 2. Install dependencies
+npm install
+
+# 3. Configure environment variables (.env)
+PORT=5000
+DATABASE_URL=postgres://user:password@localhost:5432/hotel_db
+JWT_SECRET=your_super_secret_production_key
+
+# 4. Run database migrations and start development server
+npm run dev
