@@ -3,7 +3,7 @@
   <h1>🏨 HOTEL RESERVATION API</h1>
   <p><b>Production-Grade RESTful Micro-Engine Built for High Concurrency & Data Integrity</b></p>
 
- 
+  
 
 </div>
 
@@ -18,7 +18,6 @@ sequenceDiagram
     participant Router as Express Router
     participant Val as Zod Middleware
     participant Auth as Auth / bcrypt
-    participant Controller as Room / Booking Controller
     participant DB as PostgreSQL (pg.Pool)
     participant Err as Global Error Handler
 
@@ -39,9 +38,9 @@ sequenceDiagram
             Auth-->>Client: 200 OK + JWT Stateless Token
         end
     end
-
+```
 # 1. Clone the repository
-git clone [https://github.com/your-username/hotel-reservation-api.git](https://github.com/your-username/hotel-reservation-api.git)
+git clone https://github.com/your-username/hotel-reservation-api.git
 cd hotel-reservation-api
 
 # 2. Install dependencies
@@ -52,5 +51,5 @@ PORT=5000
 DATABASE_URL=postgres://user:password@localhost:5432/hotel_db
 JWT_SECRET=your_super_secret_production_key
 
-# 4. Run database migrations and start development server
+# 4. Start development server
 npm run dev
