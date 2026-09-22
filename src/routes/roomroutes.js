@@ -1,9 +1,11 @@
 const express= require('express');
 const router=express.Router();
-const {getRooms,createRoom,getRoombyId,updateRoom,delteRoom}=require('../controllers/roomcontroller');
+const {getRooms,createRoom,getRoombyId,updateRoom,deleteRoom}=require('../controllers/roomcontroller');
+const authenticateToken = require('../middleware/authmiddleware');
+const authoriseadmin = require('../middleware/rolemiddleware');
 router.get('/',getRooms);
 router.get('/:id',getRoombyId);
-router.post('/', createRoom);
-router.put('/:id',updateRoom);
-router.delete('/:id',delteRoom);
+router.post('/',authenticateToken,authoriseadmin, createRoom);
+router.put('/:id',authenticateToken,authoriseadmin, updateRoom);
+router.delete('/:id',authenticateToken,authoriseadmin, deleteRoom);
 module.exports=router;

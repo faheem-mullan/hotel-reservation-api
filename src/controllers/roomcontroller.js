@@ -61,7 +61,7 @@ const updateRoom = async (req, res) => {
     }       
 };
 
-const delteRoom = async (req, res) => {
+const deleteRoom = async (req, res) => {
     const { id } = req.params;
     try{
         const query='delete from rooms where room_id=$1 returning *;';
@@ -83,5 +83,5 @@ module.exports = {
     createRoom,
     getRoombyId,    
     updateRoom,
-    delteRoom,
+    deleteRoom,
 };
